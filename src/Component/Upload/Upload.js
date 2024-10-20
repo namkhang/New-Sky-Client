@@ -35,10 +35,10 @@ function Upload() {
     
         worksheet.columns = [
           { header: 'Tên', key: 'name', width: 30 },
-          {header: 'Mã QLXCN', key: 'ref_number', width: 30 },
+          {header: 'Số QLXCN', key: 'ref_number', width: 30 },
           { header: 'Giới tính', key: 'gender', width: 30 },
           { header: 'Ngày sinh', key: 'dayofbirth', width: 30 },
-          { header: 'Mã nhập cảnh', key: 'flightcode', width: 30 },
+          { header: 'Số hộ chiếu', key: 'flightcode', width: 30 },
           { header: 'Ngày nhập cảnh', key: 'start_date', width: 50 },
           { header: 'Ngày kết thúc nhập cảnh', key: 'end_date', width: 50 },
           { header: 'Ngày còn lại', key: 'remainingDate', width: 30 },
@@ -166,10 +166,10 @@ function Upload() {
     <tr>
       <th scope="col">#</th>
       <th scope="col">Tên</th>
-      <th scope="col">Mã QLXNC</th>
+      <th scope="col">Số QLXNC</th>
       <th scope="col">Giới tính</th>
       <th scope="col">Ngày sinh</th>
-      <th scope="col">Mã hộ chiếu</th>
+      <th scope="col">Số hộ chiếu</th>
       <th scope="col">Ngày nhập cảnh</th>
       <th scope="col">Ngày kết thúc nhập cảnh</th>
       <th scope="col">Số ngày nhập cảnh còn lại</th>
