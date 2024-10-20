@@ -38,6 +38,7 @@ function Upload() {
           {header: 'Số QLXCN', key: 'ref_number', width: 30 },
           { header: 'Giới tính', key: 'gender', width: 30 },
           { header: 'Ngày sinh', key: 'dayofbirth', width: 30 },
+          { header: 'Quốc gia', key: 'country', width: 30 },
           { header: 'Số hộ chiếu', key: 'flightcode', width: 30 },
           { header: 'Ngày nhập cảnh', key: 'start_date', width: 50 },
           { header: 'Ngày kết thúc nhập cảnh', key: 'end_date', width: 50 },
@@ -47,7 +48,7 @@ function Upload() {
     
         result.forEach(i =>{
             worksheet.addRows([
-                { name: i.name, ref_number: i.ref_number, gender: i.gender , dayofbirth : i.dayofbirth , flightcode : i.flightcode , start_date : i.start_date , end_date : i.end_date , remainingDate: i.remainingDate },
+                { name: i.name, ref_number: i.ref_number, gender: i.gender , dayofbirth : i.dayofbirth , country : i.country ,flightcode : i.flightcode , start_date : i.start_date , end_date : i.end_date , remainingDate: i.remainingDate },
               ]);
         }
 
@@ -169,6 +170,7 @@ function Upload() {
       <th scope="col">Số QLXNC</th>
       <th scope="col">Giới tính</th>
       <th scope="col">Ngày sinh</th>
+      <th scope="col">Quốc gia</th>
       <th scope="col">Số hộ chiếu</th>
       <th scope="col">Ngày nhập cảnh</th>
       <th scope="col">Ngày kết thúc nhập cảnh</th>
@@ -184,6 +186,7 @@ function Upload() {
     <td>{i.ref_number}</td>
     <td>{i.gender}</td>
     <td>{i.dayofbirth}</td>
+    <td>{i.country}</td>
     <td>{i.flightcode}</td>
     <td>{i.start_date}</td>
     <td>{i.end_date}</td>
