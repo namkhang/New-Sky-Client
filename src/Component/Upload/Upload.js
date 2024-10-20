@@ -17,7 +17,7 @@ function Upload() {
          }
         
          formData.append('type' , document.getElementById("type").value)
-            let response = await axios.post('http://localhost:5000/uploadexcel' , formData);
+            let response = await axios.post('https://new-sky-server.onrender.com/uploadexcel' , formData);
             if(response.data === "kiem tra format file"){
                 alert("Kiểm tra file và chọn đúng văn bản nhập cảnh là một hay nhiều người")
             }
@@ -94,7 +94,7 @@ function Upload() {
     }
 
     useEffect(async ()=> {
-            let response = await axios.get("http://localhost:5000/get-passenger")
+            let response = await axios.get("https://new-sky-server.onrender.com/get-passenger")
             setResult(response.data.sort((a,b) => new Date(a.start_date.split("/")[2] , parseInt(a.start_date.split("/")[1]) - 1 , a.start_date.split("/")[0]) > new Date(b.start_date.split("/")[2] , parseInt(b.start_date.split("/")[1]) - 1 , b.start_date.split("/")[0]) ? 1 : -1))
             
             
