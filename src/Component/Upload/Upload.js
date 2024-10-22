@@ -22,7 +22,7 @@ function Upload() {
                 alert("Kiểm tra file và chọn đúng văn bản nhập cảnh là một hay nhiều người")
             }
             else{
-                setResult(response.data.sort((a,b) => new Date(a.start_date.split("/")[2] , parseInt(a.start_date.split("/")[1]) - 1 , a.start_date.split("/")[0]) > new Date(b.start_date.split("/")[2] , parseInt(b.start_date.split("/")[1]) - 1 , b.start_date.split("/")[0]) ? 1 : -1))
+                setResult(response.data.sort((a,b) =>  a.createAt > b.createAt ? 1 : -1 ))
                 
             }
             
@@ -36,6 +36,7 @@ function Upload() {
         worksheet.columns = [
           { header: 'Tên', key: 'name', width: 30 },
           {header: 'Số QLXCN', key: 'ref_number', width: 30 },
+          {header: 'Mã công văn', key: 'cv_code', width: 30 },
           { header: 'Giới tính', key: 'gender', width: 30 },
           { header: 'Ngày sinh', key: 'dayofbirth', width: 30 },
           { header: 'Quốc gia', key: 'country', width: 30 },
@@ -48,7 +49,7 @@ function Upload() {
     
         result.forEach(i =>{
             worksheet.addRows([
-                { name: i.name, ref_number: i.ref_number, gender: i.gender , dayofbirth : i.dayofbirth , country : i.country ,flightcode : i.flightcode , start_date : i.start_date , end_date : i.end_date , remainingDate: i.remainingDate },
+                { name: i.name, ref_number: i.ref_number,cv_code : i.cv_code, gender: i.gender , dayofbirth : i.dayofbirth , country : i.country ,flightcode : i.flightcode , start_date : i.start_date , end_date : i.end_date , remainingDate: i.remainingDate },
               ]);
         }
 
@@ -96,7 +97,7 @@ function Upload() {
 
     useEffect(async ()=> {
             let response = await axios.get("https://new-sky-server.onrender.com/get-passenger")
-            setResult(response.data.sort((a,b) => new Date(a.start_date.split("/")[2] , parseInt(a.start_date.split("/")[1]) - 1 , a.start_date.split("/")[0]) > new Date(b.start_date.split("/")[2] , parseInt(b.start_date.split("/")[1]) - 1 , b.start_date.split("/")[0]) ? 1 : -1))
+            setResult(response.data.sort((a,b) => a.createAt > b.createAt ? 1 : -1))
             
             
     }, [])
@@ -142,6 +143,7 @@ function Upload() {
                         <select class="form-select" aria-label="Default select example" id='type'>
                             <option selected value="single">Chỉ một khách hàng</option>
                             <option value="multiple">Nhiều khách hàng</option>
+                            <option value="sent-to-dsq">Gửi cho đại sứ quán</option>
                         </select>
                         </div>
 
@@ -168,6 +170,7 @@ function Upload() {
       <th scope="col">#</th>
       <th scope="col">Tên</th>
       <th scope="col">Số QLXNC</th>
+      <th scope="col">Mã công văn</th>
       <th scope="col">Giới tính</th>
       <th scope="col">Ngày sinh</th>
       <th scope="col">Quốc gia</th>
@@ -184,6 +187,7 @@ function Upload() {
     <th scope="row">{index + 1}</th>
     <td>{i.name}</td>
     <td>{i.ref_number}</td>
+    <td>{i.cv_code}</td>
     <td>{i.gender}</td>
     <td>{i.dayofbirth}</td>
     <td>{i.country}</td>
